@@ -1,0 +1,21 @@
+{% load crispy_forms_tags %}
+<form class="modal-content bg-dark" id="formModal"
+    hx-post="{{ request.path }}" hx-target="#dialog"
+    hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'>
+    <div class="modal-header">
+        <h3 class="modal-title fs-5" id="exampleModalLabel">
+            {% if form.instance.pk %}
+                Modify Person Information
+            {% else %}
+                Create Person Information
+            {% endif %}
+        </h3>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        {{ form|crispy }}
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-sm btn-success">Save</button>
+    </div>
+</form>

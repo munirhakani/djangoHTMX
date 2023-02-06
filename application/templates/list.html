@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-8">
+        <h3 class="text-primary">List of Person</h3>
+    </div>
+    <div class="col-4 text-end">
+        <button class="btn btn-sm btn-secondary"
+            hx-get="{% url 'ObjectCreateView' %}" hx-target="#dialog"
+            data-bs-toggle="modal" data-bs-target="#modal">
+            Create Person Information
+        </button>
+    </div>
+</div>
+<table class="table table-sm table-primary table-bordered">
+    <thead>
+        <th style="width: 65%;">Name</th>
+        <th style="width: 20%;">Date of Birth</th>
+        <th class="btnCols">Detail</th>
+        <th class="btnCols">Update</th>
+        <th class="btnCols">Delete</th>
+    </thead>
+    <tbody class="table-secondary">
+        <tr id="target"></tr>
+        {% include 'objects.html' %}
+    </tbody>
+</table>
+{% endblock content %}

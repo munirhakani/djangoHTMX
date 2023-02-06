@@ -1,0 +1,11 @@
+{% for object in object_list %}
+    {% if forloop.last and is_paginated and page_obj.has_next %}
+        <tr id="object-{{ object.pk }}"
+            hx-get="{% url 'ObjectListView' %}?page={{ page_obj.number|add:1 }}"
+            hx-trigger="revealed" hx-swap="afterend">
+    {% else %}
+        <tr id="object-{{ object.pk }}">
+    {% endif %}
+            {% include 'data.html' %}
+        </tr>
+{% endfor %}
